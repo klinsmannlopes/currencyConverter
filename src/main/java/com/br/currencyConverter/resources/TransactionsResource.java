@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import javax.management.InstanceNotFoundException;
+
 @RequestMapping("transactions")
 @RestController
 public class TransactionsResource {
@@ -20,7 +22,7 @@ public class TransactionsResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Transactions> save(@RequestBody TransactionInputDTO transactionInputDTO) throws BusinessRuleException {
+    public Mono<Transactions> save(@RequestBody TransactionInputDTO transactionInputDTO) throws BusinessRuleException, InstanceNotFoundException {
         return exchangeRatesService.converter(transactionInputDTO);
     }
 
