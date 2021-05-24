@@ -2,8 +2,6 @@ package com.br.currencyConverter.apis.exchangerate;
 
 import com.br.currencyConverter.apis.UnirestService;
 import com.br.currencyConverter.dtos.outputs.RateDTO;
-import com.br.currencyConverter.exceptions.BusinessRuleException;
-import lombok.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,7 +17,7 @@ public class ExchangeRatesApi extends UnirestService {
 
     private final String GET_RATE = "/latest";
 
-    public RateDTO getListRates() throws BusinessRuleException {
+    public RateDTO getListRates() {
         Map<String, Object> queryParams = new HashMap<String, Object>();
 
         queryParams.put("access_key", accessKey);
@@ -30,7 +28,7 @@ public class ExchangeRatesApi extends UnirestService {
 
     @Override
     public <T> T get(String uri, Map<String, String> headers, Map<String, Object> routeParams,
-                     Map<String, Object> queryParams, Class<T> responseBodyClass, T responseError) throws BusinessRuleException {
+                     Map<String, Object> queryParams, Class<T> responseBodyClass, T responseError) {
         return super.get(BASE_URL.concat(uri), headers, routeParams, queryParams, responseBodyClass, responseError);
     }
 }

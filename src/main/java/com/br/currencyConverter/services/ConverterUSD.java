@@ -4,7 +4,6 @@ import com.br.currencyConverter.apis.exchangerate.ExchangeRatesApi;
 import com.br.currencyConverter.dtos.inputs.TransactionInputDTO;
 import com.br.currencyConverter.dtos.outputs.RateDTO;
 import com.br.currencyConverter.enums.Currencies;
-import com.br.currencyConverter.exceptions.BusinessRuleException;
 import com.br.currencyConverter.interfaces.ConverterInterface;
 import com.br.currencyConverter.models.transactions.Transactions;
 import com.br.currencyConverter.repositories.TransactionsRepository;
@@ -29,7 +28,7 @@ public class ConverterUSD implements ConverterInterface {
     }
 
     @Override
-    public RateDTO getListRates() throws BusinessRuleException {
+    public RateDTO getListRates() {
         RateDTO rateDTO = exchangeRatesApi.getListRates();
         return rateDTO;
     }
@@ -40,7 +39,7 @@ public class ConverterUSD implements ConverterInterface {
     }
 
     @Override
-    public Mono<Transactions> converterAndSave(TransactionInputDTO transactionInputDTO) throws BusinessRuleException {
+    public Mono<Transactions> converterAndSave(TransactionInputDTO transactionInputDTO) {
         RateDTO rateDTO = getListRates();
         double rateUsed = rateDTO.getRates().getUSD();
         double destinyValue = converter(rateUsed, transactionInputDTO.getOriginValue());

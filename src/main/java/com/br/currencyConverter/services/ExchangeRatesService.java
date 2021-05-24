@@ -1,7 +1,6 @@
 package com.br.currencyConverter.services;
 
 import com.br.currencyConverter.dtos.inputs.TransactionInputDTO;
-import com.br.currencyConverter.exceptions.BusinessRuleException;
 import com.br.currencyConverter.factory.ConverterFactory;
 import com.br.currencyConverter.interfaces.ConverterInterface;
 import com.br.currencyConverter.models.transactions.Transactions;
@@ -24,7 +23,7 @@ public class ExchangeRatesService {
     @Autowired
     private TransactionsRepository transactionsRepository;
 
-    public Mono<Transactions> converter(TransactionInputDTO transactionInputDTO) throws BusinessRuleException, InstanceNotFoundException {
+    public Mono<Transactions> converter(TransactionInputDTO transactionInputDTO) throws InstanceNotFoundException {
         ConverterInterface converterInterface = converterFactory.getInstance(transactionInputDTO.getDestinyCurrency());
         Mono<Transactions> transaction = converterInterface.converterAndSave(transactionInputDTO);
 
