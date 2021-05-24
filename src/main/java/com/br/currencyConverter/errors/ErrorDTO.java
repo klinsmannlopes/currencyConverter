@@ -19,21 +19,4 @@ public class ErrorDTO {
         this.errorReason = errorReason;
     }
 
-    public ErrorDTO(Exception exception) {
-        setErrorCode(99);
-        setErrorSource(exception.getClass().getCanonicalName());
-        if(exception.getMessage() != null && !exception.getMessage().trim().isEmpty())
-            setErrorReason(exception.getMessage());
-
-        StackTraceElement[] stackTrace = exception.getStackTrace();
-        if(stackTrace != null && stackTrace.length > 0) {
-            String reason = "";
-            for (int i = 0; i < stackTrace.length; i++) {
-                if(stackTrace[i].getClassName().contains("com.br.currencyConverter"))
-                    reason += stackTrace[i].getClassName() + " (" + stackTrace[i].getLineNumber() + ") ";
-            }
-            setErrorDetail(reason.trim());
-        }
-    }
-
 }

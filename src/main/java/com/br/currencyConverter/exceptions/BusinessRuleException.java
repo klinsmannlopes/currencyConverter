@@ -3,10 +3,8 @@ package com.br.currencyConverter.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import com.br.currencyConverter.enums.BusinessRulesEnum;
 import org.springframework.http.HttpStatus;
-
 import com.br.currencyConverter.errors.ErrorDTO;
 import lombok.Getter;
 import lombok.Setter;
