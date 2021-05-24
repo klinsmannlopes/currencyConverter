@@ -19,12 +19,8 @@ public class ExchangeRatesApiTest {
 
     @Test
     @DisplayName("Check the list of fees get success")
-    public void checkListFeesEmpty() throws BusinessRuleException {
-        String accessKey = "110ed70748e8b3174324927a9d226b44";
-        String symbols = "BRL,USD,EUR,JPY";
-
-        RateDTO result = exchangeRatesApi.getListRates(accessKey, symbols);
-
+    public void checkListFeesEmptyTest() throws BusinessRuleException {
+        RateDTO result = exchangeRatesApi.getListRates();
         assertEquals(true, result.isSuccess());
     }
 
