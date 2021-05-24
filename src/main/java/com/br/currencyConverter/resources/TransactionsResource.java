@@ -5,10 +5,13 @@ import com.br.currencyConverter.dtos.inputs.TransactionInputDTO;
 import com.br.currencyConverter.exceptions.BusinessRuleException;
 import com.br.currencyConverter.factory.ConverterFactory;
 import com.br.currencyConverter.models.transactions.Transactions;
+import com.br.currencyConverter.repositories.TransactionsRepository;
 import com.br.currencyConverter.services.ExchangeRatesService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.management.InstanceNotFoundException;
@@ -26,15 +29,10 @@ public class TransactionsResource {
         return exchangeRatesService.converter(transactionInputDTO);
     }
 
-    /*
-    @PostMapping
-    @ResponseBody
-    public ResponseEntity<OperationOutputDTO> create(@RequestBody OperationInputDTO operation) {
-        OperationOutputDTO apiResult = operationService.create(operation);
-
-        return new ResponseEntity<OperationOutputDTO>(apiResult, HttpStatus.OK);
+    @GetMapping("{user}")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<Transactions> listAll(@PathVariable String user) {
+        return exchangeRatesService.findTransactionsByUser(user);
     }
-
-     */
 
 }
