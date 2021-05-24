@@ -2,37 +2,37 @@ package com.br.currencyConverter.models.transactions;
 
 
 import com.br.currencyConverter.enums.Currencies;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Getter
-@Table
-@NoArgsConstructor
 @Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@With
+@Table("transactions")
 public class Transactions {
 
     @Id
     private Integer id;
 
     @Column
-    private String idUser;
+    private String userCode;
 
     @Column
-    private Currencies originCurrency;
+    private String originCurrency;
 
     @Column
     private double originValue;
 
     @Column
-    private Currencies destinyCurrency;
+
+    private String destinyCurrency;
 
     @Column
     private double destinyValue;
@@ -43,11 +43,11 @@ public class Transactions {
     @Column
     private Timestamp creationDate;
 
-    public Transactions(String idUser, Currencies originCurrency, double originValue, Currencies destinyCurrency, double destinyValue, double rateUsed, Timestamp timestamp) {
-        this.idUser = idUser;
-        this.originCurrency = originCurrency;
+    public Transactions(String userCode, Currencies originCurrency, double originValue, Currencies destinyCurrency, double destinyValue, double rateUsed, Timestamp timestamp) {
+        this.userCode = userCode;
+        this.originCurrency = originCurrency.name();
         this.originValue = originValue;
-        this.destinyCurrency = destinyCurrency;
+        this.destinyCurrency = destinyCurrency.name();
         this.destinyValue = destinyValue;
         this.rateUsed = rateUsed;
         this.creationDate = timestamp;
