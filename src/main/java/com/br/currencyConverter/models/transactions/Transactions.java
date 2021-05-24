@@ -29,18 +29,27 @@ public class Transactions {
     private Currencies originCurrency;
 
     @Column
-    private BigDecimal originValue;
+    private double originValue;
 
     @Column
     private Currencies destinyCurrency;
 
     @Column
-    private BigDecimal destinyValue;
+    private double destinyValue;
 
     @Column
-    private BigDecimal rateUsed;
+    private double rateUsed;
 
     @Column
     private Timestamp creationDate;
 
+    public Transactions(String idUser, Currencies originCurrency, double originValue, Currencies destinyCurrency, double destinyValue, double rateUsed, Timestamp timestamp) {
+        this.idUser = idUser;
+        this.originCurrency = originCurrency;
+        this.originValue = originValue;
+        this.destinyCurrency = destinyCurrency;
+        this.destinyValue = destinyValue;
+        this.rateUsed = rateUsed;
+        this.creationDate = timestamp;
+    }
 }
