@@ -12,16 +12,18 @@ import java.util.Map;
 @Service
 public class ExchangeRatesApi extends UnirestService {
 
-    //@Value("${app.somapay.backoffice_url}")
+    private static final String accessKey = "110ed70748e8b3174324927a9d226b44";
+    private static final String symbols = "BRL,USD,EUR,JPY";
+
     private String BASE_URL = "http://api.exchangeratesapi.io";
 
     private final String GET_RATE = "/latest";
 
-    public RateDTO getListRates(String accessKey, String symbols) throws BusinessRuleException {
+    public RateDTO getListRates() throws BusinessRuleException {
         Map<String, Object> queryParams = new HashMap<String, Object>();
 
         queryParams.put("access_key", accessKey);
-        //queryParams.put("symbols", symbols);
+        queryParams.put("symbols", symbols);
 
         return get(GET_RATE, null, null, queryParams, RateDTO.class, null);
     }

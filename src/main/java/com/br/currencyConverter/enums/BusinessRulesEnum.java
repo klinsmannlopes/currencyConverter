@@ -6,6 +6,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum BusinessRulesEnum {
-    LIMIT_UNAVAILABLE,
-    SAQEXTRA_UNAVAILABLE;
+    ERROR_CONVERTER;
 }
