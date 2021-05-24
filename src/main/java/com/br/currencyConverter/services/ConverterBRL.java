@@ -47,7 +47,7 @@ public class ConverterBRL implements ConverterInterface {
 
         Transactions transaction = new Transactions(
                 transactionInputDTO.getIdUser(),
-                transactionInputDTO.getOriginCurrency(),
+                Currencies.EUR,
                 transactionInputDTO.getOriginValue(),
                 transactionInputDTO.getDestinyCurrency(),
                 destinyValue,
