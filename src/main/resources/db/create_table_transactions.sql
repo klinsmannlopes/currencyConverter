@@ -1,10 +1,10 @@
 create table transactions (
                                 id serial primary key,
-                                idUser varchar not null,
-                                originCurrency varchar not null,
-                                originValue numeric not null,
-                                destinyCurrency varchar not null,
-                                destinyValue numeric not null,
-                                rateUsed numeric not null,
-                                creationDate timestamp
+                                user_code varchar not null,
+                                origin_currency varchar not null,
+                                origin_value numeric not null,
+                                destiny_currency varchar not null,
+                                destiny_value numeric not null,
+                                rate_used numeric not null,
+                                creation_date timestamp
 );
