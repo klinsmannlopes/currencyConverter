@@ -44,7 +44,6 @@ public class UnirestService {
     private <T> T performRequest(HttpRequest<?> request, String url, Class<T> responseBodyClass, T responseError) {
         HttpResponse<?> response = null;
 
-        final ApiErrorDTO apiErrorDTO = new ApiErrorDTO();
         if(responseBodyClass == null || responseBodyClass.equals(Void.class))
             response = request.asEmpty();
         else {
