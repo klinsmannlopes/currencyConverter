@@ -23,7 +23,7 @@ OBS: Se quiser apenas consultar os endpoints, pular para seção #Endpoints#, os
 
 <br /><br />
 
-## Como usar em sua própria máquina 
+## Como usar em sua própria máquina
 
 Clone o projeto ou faça [download](https://github.com/klinsmannlopes/currencyConverter.git) dele:
 
@@ -110,9 +110,9 @@ Com isso tudo feito, agora e só da o run da sua da aplicação em sua IDE:
 
 - Endpoint para listar transações do usuário
     - GET
-    - [https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/user/{ID}](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/user/{ID}).
+    - [https://currencyconverterjayatech.herokuapp.com/transactions/{user}](https://currencyconverterjayatech.herokuapp.com/transactions/{user}).
         - Exemplo:
-            - [ID como 32afe227-188d-4a21-b966-54de42f295ba:](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/user/32afe227-188d-4a21-b966-54de42f295ba)
+            - [ID como 8a818ea37425d515017425f6474605fb](https://currencyconverterjayatech.herokuapp.com/transactions/8a818ea37425d515017425f6474605fb)
             - JSON de resposta:
 
 ```json
@@ -123,26 +123,26 @@ Com isso tudo feito, agora e só da o run da sua da aplicação em sua IDE:
     "originCurrency": "EUR",
     "originValue": 10.0,
     "destinyCurrency": "BRL",
-    "destinyValue": 64.99596,
-    "rateUsed": 6.499596,
-    "creationDate": "2021-05-24T21:33:35.098+00:00"
+    "destinyValue": 65.06068,
+    "rateUsed": 6.506068,
+    "creationDate": "2021-05-24T23:38:19.816+00:00"
   },
   {
     "id": 2,
     "userCode": "8a818ea37425d515017425f6474605fb",
     "originCurrency": "EUR",
-    "originValue": 170.0,
-    "destinyCurrency": "BRL",
-    "destinyValue": 1105.03689,
-    "rateUsed": 6.500217,
-    "creationDate": "2021-05-24T22:50:48.266+00:00"
+    "originValue": 10.0,
+    "destinyCurrency": "USD",
+    "destinyValue": 12.22515,
+    "rateUsed": 1.222515,
+    "creationDate": "2021-05-25T03:07:59.861+00:00"
   }
 ]
 ```
-            
+
 - Endpoint para salvar e converter valor da transação
     - POST
-    - [https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/user](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/user)
+    - [https://currencyconverterjayatech.herokuapp.com/transactions](https://currencyconverterjayatech.herokuapp.com/transactions)
         - Exemplo:
             - Usar algum cliente para o endpoint (postman como exemplo)
             - Enviar o JSON abaixo no body:
