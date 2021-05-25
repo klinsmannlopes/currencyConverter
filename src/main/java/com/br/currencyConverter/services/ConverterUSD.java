@@ -12,9 +12,13 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ConverterUSD implements ConverterInterface {
+
+    private final static Logger logger = Logger.getLogger(ConverterUSD.class.getName());
 
     @Autowired
     private ExchangeRatesApi exchangeRatesApi;
@@ -30,16 +34,19 @@ public class ConverterUSD implements ConverterInterface {
     @Override
     public RateDTO getListRates() {
         RateDTO rateDTO = exchangeRatesApi.getListRates();
+        logger.log(Level.INFO, "Listando taxas das moedas de acordo com o dia");
         return rateDTO;
     }
 
     @Override
     public double converter(double rate, double originValue) {
+        logger.log(Level.INFO, "Cálculo da conversão");
         return rate * originValue;
     }
 
     @Override
     public Mono<Transactions> converterAndSave(TransactionInputDTO transactionInputDTO) {
+        logger.log(Level.INFO, "Iniciando conversão da moeda: " + Currencies.EUR + " para " + transactionInputDTO.getDestinyCurrency());
         RateDTO rateDTO = getListRates();
         double rateUsed = rateDTO.getRates().getUSD();
         double destinyValue = converter(rateUsed, transactionInputDTO.getOriginValue());
@@ -54,6 +61,8 @@ public class ConverterUSD implements ConverterInterface {
                 new Timestamp(System.currentTimeMillis())
         );
 
-        return transactionsRepository.save(transaction);
+        Mono<Transactions> saveTransactions = transactionsRepository.save(transaction);
+        logger.log(Level.INFO, "Salvando transação");
+        return saveTransactions;
     }
 }

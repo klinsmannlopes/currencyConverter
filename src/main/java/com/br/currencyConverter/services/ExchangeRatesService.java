@@ -13,9 +13,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.management.InstanceNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ExchangeRatesService {
+
+    private final static Logger logger = Logger.getLogger(ExchangeRatesService.class.getName());
 
     @Autowired
     private ConverterFactory converterFactory;
@@ -33,6 +37,7 @@ public class ExchangeRatesService {
     }
 
     public Flux<Transactions> findTransactionsByUser(String user) {
+        logger.log(Level.INFO, "Listando transações do usuário: " + user);
         return transactionsRepository.findAllByUserCode(user)
                 .switchIfEmpty(monoResponseStatusNotFoundException());
     }
