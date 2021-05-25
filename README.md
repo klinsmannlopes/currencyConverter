@@ -11,15 +11,42 @@ OBS: Se quiser apenas consultar os endpoints, pular para seção #Endpoints#, os
 
 [Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
 
+Decidi usar um framework reativo devido se tratar de um conversor de moedas,
+<br>
+do qual o cliente não pode esperar uma resposta enquanto o outro ainda esta em processamento de conversão.
+
 [Postgres](https://www.postgresql.org/download/)
 
+Existe N motivos pra usar o postgres, mas como estou trabalhando com dinheiro, preferi usar atomicidade do postgres,
+Isso consiste em que a transação ou ela será executada em sua totalidade ou não será de modo nenhum,
+Assim não ocorre perigo da minha transação se uma trasação de dado sujo.
+Outro motivo do porque usar, é que quando trabalho com dinheiro eu sempre uso postgres devido sua estrutura de tabelas.
+
 [Uma conta exchangeratesapi.io](https://exchangeratesapi.io/)
+
+Aqui onde pego as taxas de conversões.
 
 ## Requerimento
 
 [Link para criar conta no exchangeratesapi.io](https://exchangeratesapi.io/)
 
 [Tutorial do zero para instalar Postgres](https://www.postgresql.org/download/)
+
+## Design usados
+
+- Factory
+    - Utilizei desse método para indentificar qual implementação usar na hora da converção da moeda,
+        
+      assim não e preciso usar N if's para indentificar a moeda a ser convertida.
+    
+- SOLID
+    - Usei esses princípios para separar as camadas e classes java do projeto, com ele implemetado,
+    
+      fica mais fácil de criar novas implementações para a converção, já que agora e so plugar em vez de refatorar alguma parte do código.
+      
+    - É fica mais fácil também de refatorar o código, já que agora se for mudar algo devido alguma nova regra ou nova funcionalidade, e só mexer na implementação especifica.  
+
+
 
 <br /><br />
 
