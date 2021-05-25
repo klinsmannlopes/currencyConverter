@@ -155,31 +155,6 @@ Com isso tudo feito, agora e só da o run da sua da aplicação em sua IDE:
 }
 ```
 
-- Endpoint para consultar e realizar contagem de acessos
-    - GET (todos utilizam o get)
-        - Podemos utilizar esse endpoint para realizar essa funções em outras partes do site, apenas mudando os dados de input do endpoint
-        - [https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/{action}/{namespace}/{key}](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/get/ton.com/visits)
-            - Obrigatórios
-                - action
-                    - Esse dado e para saber qual ação realizar
-                        - 'get' para pegar o contador e 'hit' para incrementar o contador
-                - namespace
-                    - Esse dado deve ser exclusivo, é recomendável usar o domínio do seu site
-                - Key
-                    - Esse dado junto com o namespace, identifica qual contador buscar e qual realizar o increment da contagem.
-
-    
-    - Endpoints já configurados
-        - Para facilitar os testes, já iniciei um contador
-            - Buscar contador
-                - GET
-                - [https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/get/ton.com/visits](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/get/ton.com/visits)
-
-            - Realizar contagem
-                - GET
-                - [https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/hit/ton.com/visits](https://ilejvt44e0.execute-api.us-east-2.amazonaws.com/dev/visits/hit/ton.com/visits)
-
-
 ## Após toda essa configuração e só partir pro abraço e aproveitar sua API, até a próxima.
 
 
