@@ -3,7 +3,7 @@ Projeto que se trata de um conversor de moedas.
 
 No momento ele só converte em cima da base do euro, devido o API externa de taxas só liberar essa base com uma conta free.
 
-OBS: Se quiser apenas consultar os endpoints, pular para seção #Endpoints#, os mesmos já se encontram na AWS e já podem ser usados.
+OBS: Se quiser apenas consultar os endpoints, pular para seção #Endpoints#, os mesmos já se encontram na nuvem e já podem ser usados.
 
 <br />
 
