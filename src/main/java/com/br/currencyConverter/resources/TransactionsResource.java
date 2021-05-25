@@ -11,6 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.management.InstanceNotFoundException;
+import javax.validation.Valid;
 
 @RequestMapping("transactions")
 @RestController
@@ -21,7 +22,7 @@ public class TransactionsResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Transactions> save(@RequestBody TransactionInputDTO transactionInputDTO) throws InstanceNotFoundException {
+    public Mono<Transactions> save(@Valid @RequestBody TransactionInputDTO transactionInputDTO) throws InstanceNotFoundException {
         return exchangeRatesService.converter(transactionInputDTO);
     }
 
