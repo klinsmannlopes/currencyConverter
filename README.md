@@ -35,16 +35,17 @@ Aqui onde pego as taxas de conversões.
 ## Design usados
 
 - Factory
-    - Utilizei desse método para indentificar qual implementação usar na hora da converção da moeda,
-        
+    - Utilizei desse método para indentificar qual implementação usar na hora da converção da moeda,<br>
+      cada classe que implementa a classe génerica ConverterInterface,  possui um tipo moeda,<br>
       assim não e preciso usar N if's para indentificar qual classe usar para converter a moeda.
-    
+      <br><br>
 - SOLID
-    - Usei esses princípios para separar as camadas e classes java do projeto, com ele implementado,
-    
+    - Usei esses princípios para separar as camadas e classes java do projeto, com ele implementado,<br>
       fica mais fácil de criar novas implementações para a converção, já que agora e so plugar em vez de refatorar alguma parte do código.
-      
-    - É fica mais fácil também de refatorar o código, já que agora se for mudar algo devido alguma nova regra ou nova funcionalidade, e só mexer na implementação especifica.  
+      <br><br>
+    - Um exemplo, e se eu quiser criar uma nova converção de moeda e cria taxas em cima dela e só plugar na interface ConverterInterface, e construir sua implementação.
+      <br><br>
+    - Assim fica mais fácil também de refatorar o código, já que agora se for mudar algo devido alguma nova regra ou nova funcionalidade, e só mexer na implementação especifica.  
 
 
 
