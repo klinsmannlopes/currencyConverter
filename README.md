@@ -19,8 +19,8 @@ do qual o cliente não pode esperar uma resposta enquanto o outro ainda esta em 
 
 Existe N motivos pra usar o postgres, mas como estou trabalhando com dinheiro, preferi usar atomicidade do postgres,
 Isso consiste em que a transação ou ela será executada em sua totalidade ou não será de modo nenhum,
-Assim não ocorre perigo da minha transação se uma trasação de dado sujo.
-Outro motivo do porque usar, é que quando trabalho com dinheiro eu sempre uso postgres devido sua estrutura de tabelas.
+assim não ocorre perigo da minha transação conter um dado sujo.<br>
+Outro motivo do porque usar, é que quando trabalho com dinheiro eu sempre uso postgres devido sua estrutura de tabelas, fica mais organizado a transação linha a linha na tabela.
 
 [Uma conta exchangeratesapi.io](https://exchangeratesapi.io/)
 
@@ -37,10 +37,10 @@ Aqui onde pego as taxas de conversões.
 - Factory
     - Utilizei desse método para indentificar qual implementação usar na hora da converção da moeda,
         
-      assim não e preciso usar N if's para indentificar a moeda a ser convertida.
+      assim não e preciso usar N if's para indentificar qual classe usar para converter a moeda.
     
 - SOLID
-    - Usei esses princípios para separar as camadas e classes java do projeto, com ele implemetado,
+    - Usei esses princípios para separar as camadas e classes java do projeto, com ele implementado,
     
       fica mais fácil de criar novas implementações para a converção, já que agora e so plugar em vez de refatorar alguma parte do código.
       
@@ -74,7 +74,7 @@ Após isso você precisa configurar seu banco de dados:
 
 [Configurar Postgres tutorial](https://www.devmedia.com.br/postgresql-tutorial/33025)
 
-Comandos simples para criar a tabela o schema do banco, realizar esses comandos no database padrão do postgres
+Comandos simples para criar a tabela e o schema do banco, realizar esses comandos no database padrão do postgres
 
 Criar schema:
 
@@ -139,7 +139,7 @@ Com isso tudo feito, agora e só da o run da sua da aplicação em sua IDE:
     - GET
     - [https://currencyconverterjayatech.herokuapp.com/transactions/{user}](https://currencyconverterjayatech.herokuapp.com/transactions/{user}).
         - Exemplo:
-            - [ID como 8a818ea37425d515017425f6474605fb](https://currencyconverterjayatech.herokuapp.com/transactions/8a818ea37425d515017425f6474605fb)
+            - [User como 8a818ea37425d515017425f6474605fb](https://currencyconverterjayatech.herokuapp.com/transactions/8a818ea37425d515017425f6474605fb)
             - JSON de resposta:
 
 ```json
