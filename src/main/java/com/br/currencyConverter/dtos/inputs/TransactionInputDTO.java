@@ -18,7 +18,6 @@ public class TransactionInputDTO {
     private double originValue;
 
     @NotNull
-    @Pattern(message = "Por favor escolher umas da moedas, BRL, USD, EUR, JPY, ex: CE", regexp = "(^$|BRL|USD|EUR|JPY)")
     private Currencies destinyCurrency;
 
 }
